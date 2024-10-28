@@ -2,6 +2,9 @@ import { Head, Link, usePage } from "@inertiajs/react"
 import Layouts from "../Layouts/Layouts"
 import { useRoute } from '../../../vendor/tightenco/ziggy'
 import { useState } from "react"
+import LetterPullup from "@/components/ui/letter-pullup"
+
+
 
 const Home = ({ posts }) => {
 
@@ -17,8 +20,8 @@ const Home = ({ posts }) => {
 
   return (
     <div>
-      <Head title={component} />
-      <h1 className="title">Take Notes</h1>
+      <LetterPullup words="Notes App" delay={0.05} className="title "/>
+
       { flashMsg && <div className="absolute top-24 right-6 bg-rose-500 p-2 rounded-md shadow-lg text-sm text-white">{flashMsg}</div>}
 
       { flash.success && <div className="absolute top-24 right-6 bg-green-500 p-2 rounded-md shadow-lg text-sm text-white">{flash.success}</div>}
@@ -40,12 +43,13 @@ const Home = ({ posts }) => {
       <div>
         {posts.links.map(link =>(
           link.url ?
-          <Link key={link.label} href={link.url} dangerouslySetInnerHTML={{ __html: link.label}} className={`p-1 mx-1 ${ link.active ? 'text-emerald-600 font-bold' :''}`}/>
+          <Link key={link.label} href={link.url} dangerouslySetInnerHTML={{ __html: link.label}} className={`p-1 mx-1 ${ link.active ? 'text-blue-600 font-bold' :''}`}/>
           :
           <span 
             key={link.label} dangerouslySetInnerHTML={{ __html: link.label}} className='p-1 mx-1 text-slate-300'
           ></span>
         ))}
+
       </div>
     </div>
   )
